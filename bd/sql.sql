@@ -1,13 +1,14 @@
-CREATE TABLE "User" (
+CREATE TABLE User(
     idUser INTEGER PRIMARY KEY,
     lName TEXT NOT NULL,
     fName TEXT NOT NULL,
     birthDate TEXT NOT NULL,
-    gender TEXT NOT NULL,
-    size REAL,
-    weight REAL,
-    email TEXT,
-    password TEXT,
+    gender TEXT NOT NULL
+        CHECK gender = 'F' or gender = 'M' or gender = 'NB',
+    size REAL NOT NULL,
+    weight REAL NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
 );
 
 
@@ -15,6 +16,7 @@ CREATE TABLE "Activities" (
     idAct INTEGER PRIMARY KEY,
     description TEXT NOT NULL,
     date TEXT NOT NULL,
+    FOREIGN KEY (User_idUser) REFERENCES User(idUser)
 );
 
 
@@ -26,7 +28,8 @@ CREATE TABLE "Data" (
     cardiacFreqMin INTEGER,
     cardiacFreqAvg INTEGER,
     cardiacFreqMax  INTEGER,
-    altitude INTEGER,
     longitude REAL,
-    latitude REAL
+    latitude REAL,
+    altitude INTEGER,
+    FOREIGN KEY (Activities_idAct) REFERENCES Activities(idAct)
 );
