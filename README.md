@@ -25,7 +25,7 @@ L’application devra donc garantir que deux comptes ne peuvent pas être créé
 
 ### **PARTIE 2 : mySQL**
 
-### 1.2 Connexion des utilisateurs#
+### 1.2 Connexion des utilisateurs
 
 Pour accéder à leurs données d’activité sportive et gérer ces données, les utilisateurs devront pouvoir se connecter à l’application en utilisant leur adresse électronique et leur mot de passe.
 
@@ -49,7 +49,7 @@ sqlite3 sport_track.db
 
 
 ### **PARTIE 3 : PHP**
-### 1.3. Gestion des fichiers de données#
+### 1.3. Gestion des fichiers de données
 Après s’être connectés à l’application, les utilisateurs devront pouvoir déposer et supprimer des fichiers d’activité sportive, et avoir accès à la liste de ces fichiers.
 
 Les fichiers seront des fichiers au format JSON. Leur structure sera la suivante:
