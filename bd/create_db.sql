@@ -1,6 +1,6 @@
-DROP TABLE "User";
-DROP TABLE "Activities";
 DROP TABLE "Data";
+DROP TABLE "Activities";
+DROP TABLE "User";
 
 CREATE TABLE "User" (
 	"idUser"	INTEGER,
