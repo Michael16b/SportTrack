@@ -10,9 +10,10 @@ CREATE TABLE "User" (
 	"gender"	TEXT NOT NULL CHECK("gender" = 'F' OR "gender" = 'M' OR "gender" = 'NB'),
 	"size"	REAL NOT NULL,
 	"weight"	REAL NOT NULL,
-	"email"	TEXT NOT NULL UNIQUE,
+	"email"	TEXT NOT NULL 
+		CONSTRAINT "uq_email" UNIQUE,
 	"password"	TEXT NOT NULL,
-	PRIMARY KEY("idUser" AUTOINCREMENT)
+	CONSTRAINT "pk_User" PRIMARY KEY("idUser" AUTOINCREMENT)
 );
 
 CREATE TABLE "Activities" (
@@ -20,8 +21,8 @@ CREATE TABLE "Activities" (
 	"description"	TEXT NOT NULL,
 	"date"	DATE NOT NULL,
 	"idUser"	TEXT,
-	FOREIGN KEY("idUser") REFERENCES "User"("idUser"),
-	PRIMARY KEY("idAct" AUTOINCREMENT)
+	CONSTRAINT "fk_Activites_User" FOREIGN KEY("idUser") REFERENCES "User"("idUser"),
+	CONSTRAINT "pk_Activities" PRIMARY KEY("idAct" AUTOINCREMENT)
 );
 
 
@@ -37,6 +38,6 @@ CREATE TABLE "Data" (
 	"latitude"	REAL,
 	"altitude"	INTEGER,
 	"idAct"	INTEGER NOT NULL,
-	FOREIGN KEY("idAct") REFERENCES "Activities"("idAct"),
-	PRIMARY KEY("idData")
+	CONSTRAINT "fk_Data_Activities" FOREIGN KEY("idAct") REFERENCES "Activities"("idAct"),
+	CONSTRAINT "pk_Data" PRIMARY KEY("idData")
 );
