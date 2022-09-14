@@ -1,5 +1,7 @@
 <?php
-interface CalculDistance {
+class CalculDistanceImpl implements CalculDistance {
+
+   const R = 6378.137;
     /**
      * Retourne la distance en mètres entre 2 points GPS exprimés en degrés.
      * @param float $lat1 Latitude du premier point GPS
@@ -8,7 +10,14 @@ interface CalculDistance {
      * @param float $long2 Longitude du second point GPS
      * @return float La distance entre les deux points GPS
      */
-    public function calculDistance2PointsGPS(float $lat1, float $long1, float $lat2, float $long2): float;
+    public function calculDistance2PointsGPS(float $lat1, float $long1, float $lat2, float $long2){
+        $lat1 = pi*($lat1)/180;
+        $lat2 = pi*($lat2)/180;
+        $long1= pi*($long1)/180;
+        $long2 = pi*($long2)/180;
+        return (self::$R*acos(sin($lat2)*sin($lat1)+cos($lat2)*cos($lat1)*cos($long2-$long1)));
+    }
+
 
     /**
      * Retourne la distance en mètres du parcours passé en paramètres. Le parcours est
@@ -16,6 +25,12 @@ interface CalculDistance {
      * @param Array $parcours Le tableau contenant les points GPS
      * @return float La distance du parcours
      */
-    public function calculDistanceTrajet(Array $parcours): float;
+    public function calculDistanceTrajet(Array $parcours){
+        $distance = 0;
+        for ($i = 0; $i < count($parcours)-1; ++$i) {
+            $distance += $this -> calculDistance2PointsGPS($parcours[i]["latitude"], $parcours[i]["longitude"],$parcours[i+1]["latitude"],$parcours[i+1]["longitude"]);
+        }
+        return $distance;
+    }
 }
 ?>
