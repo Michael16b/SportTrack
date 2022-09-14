@@ -26,11 +26,12 @@ class CalculDistanceImpl implements CalculDistance {
      * @return float La distance du parcours
      */
     public function calculDistanceTrajet(Array $parcours){
-        $distance = 0;
+        $distTotale = 0;
+        var_dump(count($parcours));
         for ($i = 0; $i < count($parcours)-1; ++$i) {
-            $distance += $this -> calculDistance2PointsGPS($parcours[i]["latitude"], $parcours[i]["longitude"],$parcours[i+1]["latitude"],$parcours[i+1]["longitude"]);
+            $distTotale += $this -> calculDistance2PointsGPS(($parcours[$i]["latitude"]), ($parcours[$i]["longitude"]),($parcours[$i+1]["latitude"]),($parcours[$i+1]["longitude"]));
         }
-        return $distance;
+        return $distTotale;
     }
 
     private function degreVersRad(float $deg){
