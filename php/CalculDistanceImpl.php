@@ -32,7 +32,6 @@ class CalculDistanceImpl implements CalculDistance {
         var_dump(count($parcours));
         for ($i = 0; $i < count($parcours)-1; ++$i) {
            $distTotale += $this->calculDistance2PointsGPS(($parcours[$i]["latitude"]), ($parcours[$i]["longitude"]),($parcours[$i+1]["latitude"]),($parcours[$i+1]["longitude"]));
-
         }
         return $distTotale;
     }
