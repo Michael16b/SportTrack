@@ -11,10 +11,10 @@ class CalculDistanceImpl implements CalculDistance {
      * @return float La distance entre les deux points GPS
      */
     public function calculDistance2PointsGPS(float $lat1, float $long1, float $lat2, float $long2){
-        $lat1 = pi*($lat1)/180;
-        $lat2 = pi*($lat2)/180;
-        $long1= pi*($long1)/180;
-        $long2 = pi*($long2)/180;
+        $lat1 = degreVersRad($lat1);
+        $lat2 = degreVersRad($lat2);
+        $long1= degreVersRad($long1);
+        $long2 = degreVersRad($long2);
         return (self::$R*acos(sin($lat2)*sin($lat1)+cos($lat2)*cos($lat1)*cos($long2-$long1)));
     }
 
@@ -31,6 +31,10 @@ class CalculDistanceImpl implements CalculDistance {
             $distance += $this -> calculDistance2PointsGPS($parcours[i]["latitude"], $parcours[i]["longitude"],$parcours[i+1]["latitude"],$parcours[i+1]["longitude"]);
         }
         return $distance;
+    }
+
+    private function degreVersRad(float $deg){
+        return pi*($deg)/180;
     }
 }
 ?>
