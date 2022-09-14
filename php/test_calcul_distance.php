@@ -13,5 +13,5 @@ $etap5 = $classCalc->calculDistance2PointsGPS(47.647867,-2.781744,47.648510,-2.7
 $parcours = array($etap1,$etap2,$etap3,$etap4,$etap5);
 
 $distTotale = $classCalc->calculDistanceTrajet($parcours);
-//echo $distTotale;
+echo $distTotale;
 ?>
