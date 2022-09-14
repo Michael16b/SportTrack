@@ -28,10 +28,7 @@ interface CalculDistance {
     public function calculDistanceTrajet(Array $parcours): float {
         $distance = 0;
         for ($i = 1; $i <= count($parcours)-1; $i+=2) {
-            $distance += calculDistance2PointsGPS($parcours[0]["latitude"],
-                                                    $parcours[0]["longitude"],
-                                                    $parcours[1]["latitude"],
-                                                    $parcours[1]["longitude"])
+            $distance += calculDistance2PointsGPS($parcours[0]["latitude"], $parcours[0]["longitude"],$parcours[1]["latitude"],$parcours[1]["longitude"]);
         }
         return $distance;
     }
