@@ -16,6 +16,7 @@ interface CalculDistance {
         $long1= pi*($long1)/180;
         $long2 = pi*($long2)/180;
         return (self::$R*acos(sin($lat2)*sin($lat1)+cos($lat2)*cos($lat1)*cos($long2-$long1)));
+        // add commentaire
     }
 
 
