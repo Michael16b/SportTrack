@@ -1,5 +1,5 @@
 <?php
-interface CalculDistance {
+class CalculDistanceImpl implements CalculDistance {
 
    const R = 6378.137;
     /**
