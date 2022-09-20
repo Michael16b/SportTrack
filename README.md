@@ -98,3 +98,11 @@ Les fichiers seront des fichiers au format JSON. Leur structure sera la suivante
   9. Redémarrez VSCode, cliquez sur le logo Debug en haut à gauche et dans la petite fenêtre de debug, à droite d'Exécuter et déboguer cliquez sur la liste puis choississez "Listen for xDebug"
 
   10. Essayez de debug votre programme grâce à F5 et voilà !! Votre PHP peut-être déboggé !!
+
+
+### 1.5. Lancer un fichier PHP
+
+```bat
+php test_calcul_distance.php
+curl -X GET "http://localhost:8080/test_calcul_distance.php"
+```
