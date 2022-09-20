@@ -5,6 +5,6 @@ require_once 'User.php';
 
 $userDAO = UserDAO::getInstance();
 $utilisateurs = new User();
-$utilisateurs -> init("nom","prenom");
+$utilisateurs -> init(1,"LEBOUCHER","Naël","1999-01-01","M",180,50,"leboucher.nael@kaz.bzh","coucou");
 $userDAO = UserDAO::getInstance()->insert($utilisateurs);
 ?>
