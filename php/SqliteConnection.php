@@ -1,19 +1,18 @@
 <?php
 class SqliteConnection{
-    private string $lName;
-    private string $fName;
+    private $pdo;
     private static $instance;
 
     public function  __construct() { 
         try {
-            $this-> pdo = new PDO("sqlite:../bd/Sport_track.bd");
+            $this-> pdo = new PDO("sqlite:../bd/Sport_track.db");
             $this-> pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch (Exception $e) {
             echo "Error !: " . $e->getMessage() . "<br/>";
         }
     }
-    public function getInstance() {
+    public static function getInstance() {
         if(!isset(self::$instance)){
             self::$instance = new SQLiteConnection();
         }
