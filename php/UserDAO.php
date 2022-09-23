@@ -14,7 +14,7 @@ class UserDAO {
 
     public final function findAll(): Array{
         $dbc = SqliteConnection::getInstance()->getConnection();
-        $query = "select * from students order by lName,fName";
+        $query = "select * from User order by lName,fName";
         $stmt = $dbc->query($query);
         $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'User');
         return $results;

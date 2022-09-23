@@ -1,8 +1,5 @@
 <?php
 class User{
-    private string $lName;
-    private string $fName;
-    private int $idUser;
 
     public function  __construct() { }
     public function init($id,$lName,$fName,$bDate,$gender,$size, $weight, $eMail, $password){
@@ -28,6 +25,14 @@ class User{
     public function getWeight(): int { return $this->weight; }
     public function getMail(): string { return $this->eMail; }
     public function getPassword(): string { return $this->password; }
-    public function  __toString(): string { return $this->lName. " ". $this->fName; }
+    public function  __toString(): string { return $this->lName. " ". 
+                                            $this->fName.
+                                            $this->lName. " ". 
+                                            $this->birthDate.
+                                            $this->gender. " ". 
+                                            $this->size.
+                                            $this->weight. " ". 
+                                            $this->fNeMailame.
+                                            $this->password;}
 }
 ?>
