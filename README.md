@@ -100,9 +100,10 @@ Les fichiers seront des fichiers au format JSON. Leur structure sera la suivante
   10. Essayez de debug votre programme grâce à F5 et voilà !! Votre PHP peut-être déboggé !!
 
 
-### 1.5. Lancer un fichier PHP
+### 1.5. Lancer un fichier PHP(dans le dossier racine du projet)
 
 ```bat
+php -S localhost:8080
 php test_calcul_distance.php
 curl -X GET "http://localhost:8080/test_calcul_distance.php"
 ```
