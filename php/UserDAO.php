@@ -57,7 +57,7 @@ class UserDAO {
             $stmt = $dbc->prepare($query);
 
             // bind the paramaters
-            $stmt->bindValue(':id',$st->getId(),PDO::PARAM_STR);
+            $stmt->bindValue(':id',$obj->getId(),PDO::PARAM_STR);
 
             // execute the prepared statement
             $stmt->execute();
@@ -81,22 +81,19 @@ class UserDAO {
         if($obj instanceof User){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "update User set lName = :n , fName = :p, birthDate = :birthD, gender = :gd, size = sz, weight = wght, eMail= mail, password = pwd   WHERE idUser = :id";
-
-            $query = "insert into User(idUser,lName,fName,birthDate,gender,size, weight, eMail, password) 
-            values (:id,:n,:fN,:birthD,:gd,:sz,:wght,:mail,:pwd)";
+            $query = "update User set lName = :n , fName = :fN, birthDate = :birthD, gender = :gd, size = :sz, weight = :wght, eMail= :mail, password = :pwd   WHERE idUser = :id";
             $stmt = $dbc->prepare($query);
 
             // bind the paramaters
-            $stmt->bindValue(':id',$st->getId(),PDO::PARAM_STR);
-            $stmt->bindValue(':n',$st->getlName(),PDO::PARAM_STR);
-            $stmt->bindValue(':fN',$st->getfName(),PDO::PARAM_STR);
-            $stmt->bindValue(':birthD',$st->getBirthDate(),PDO::PARAM_STR);
-            $stmt->bindValue(':gd',$st->getGender(),PDO::PARAM_STR);
-            $stmt->bindValue(':sz',$st->getSize(),PDO::PARAM_STR);
-            $stmt->bindValue(':wght',$st->getWeight(),PDO::PARAM_STR);
-            $stmt->bindValue(':mail',$st->getMail(),PDO::PARAM_STR);
-            $stmt->bindValue(':pwd',$st->getPassword(),PDO::PARAM_STR);
+            $stmt->bindValue(':id',$obj->getId(),PDO::PARAM_STR);
+            $stmt->bindValue(':n',$obj->getlName(),PDO::PARAM_STR);
+            $stmt->bindValue(':fN',$obj->getfName(),PDO::PARAM_STR);
+            $stmt->bindValue(':birthD',$obj->getBirthDate(),PDO::PARAM_STR);
+            $stmt->bindValue(':gd',$obj->getGender(),PDO::PARAM_STR);
+            $stmt->bindValue(':sz',$obj->getSize(),PDO::PARAM_STR);
+            $stmt->bindValue(':wght',$obj->getWeight(),PDO::PARAM_STR);
+            $stmt->bindValue(':mail',$obj->getMail(),PDO::PARAM_STR);
+            $stmt->bindValue(':pwd',$obj->getPassword(),PDO::PARAM_STR);
 
             // execute the prepared statement
             $stmt->execute();
