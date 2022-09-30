@@ -2,6 +2,8 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 define ("__ROOT__",__DIR__);
+session_start(); 
+
 
 // Configuration
 require_once (__ROOT__.'/config.php');

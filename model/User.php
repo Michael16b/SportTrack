@@ -1,6 +1,5 @@
 <?php
 class User{
-    private int $idUser;
 
     public function  __construct() { }
 
@@ -26,6 +25,9 @@ class User{
     public function getWeight(): int { return $this->weight; }
     public function getMail(): string { return $this->eMail; }
     public function getPassword(): string { return $this->password; }
+    public function setId(int $id): void {$this->default = $id; }
+
+    
     public function  __toString(): string { return $this->lName. " ". 
                                             $this->fName.
                                             $this->lName. " ". 
@@ -35,7 +37,7 @@ class User{
                                             $this->weight. " ". 
                                             $this->fNeMailame.
                                             $this->password;}
-    public function setId(int $id): void {$this->default = $id; }
+    
 
 
 }

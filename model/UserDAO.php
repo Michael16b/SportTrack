@@ -1,5 +1,6 @@
 <?php
 require_once('SqliteConnection.php');
+
 class UserDAO {
     private static UserDAO $dao;
 
@@ -20,14 +21,39 @@ class UserDAO {
         return $results;
     }
 
+
+    public final function findUser(string $mail, string $password): Array{
+        $dbc = SqliteConnection::getInstance()->getConnection();
+        $query = "select * from User where mail = :mail and password = :pwd";
+        $stmt = $dbc->query($query);
+        
+        
+        $stmt->bindValue(':mail',$st->getMail(),PDO::PARAM_STR);
+        $stmt->bindValue(':pwd',$st->getPassword(),PDO::PARAM_STR);
+
+        $stmt->execute();
+        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'User');
+        return $results;
+    }
+
     public final function insert(User $st): void{
         if($st instanceof User){
+
+
             $dbc = SqliteConnection::getInstance()->getConnection();
+
+            
+
             // prepare the SQL statement
             $query = "insert into User(lName,fName,birthDate,gender,size, weight, eMail, password) 
                         values (:n,:fN,:birthD,:gd,:sz,:wght,:mail,:pwd)";
-            $stmt = $dbc->prepare($query);
 
+            
+
+            $stmt = $dbc->prepare($query);
+            
+            
+            
             // bind the paramaters
             $stmt->bindValue(':n',$st->getlName(),PDO::PARAM_STR);
             $stmt->bindValue(':fN',$st->getfName(),PDO::PARAM_STR);
@@ -37,12 +63,17 @@ class UserDAO {
             $stmt->bindValue(':wght',$st->getWeight(),PDO::PARAM_STR);
             $stmt->bindValue(':mail',$st->getMail(),PDO::PARAM_STR);
             $stmt->bindValue(':pwd',$st->getPassword(),PDO::PARAM_STR);
+            
+
+            
 
             // execute the prepared statement
             $stmt->execute();
 
             $lastId = $dbc -> lastInsertId();
             $st -> setId($lastId);
+            
+            
         }
     }
 

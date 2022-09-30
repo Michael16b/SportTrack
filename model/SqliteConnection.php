@@ -5,7 +5,7 @@ class SqliteConnection{
 
     public function  __construct() { 
         try {
-            $this-> pdo = new PDO("sqlite:../bd/Sport_track.db");
+            $this-> pdo = new PDO("sqlite:model /Sport_track.db");
             $this-> pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch (Exception $e) {
