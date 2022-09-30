@@ -1,9 +1,10 @@
 <?php
 class User{
+    private int $idUser;
 
     public function  __construct() { }
-    public function init($id,$lName,$fName,$bDate,$gender,$size, $weight, $eMail, $password){
-        $this->idUser = $id;
+
+    public function init($lName,$fName,$bDate,$gender,$size, $weight, $eMail, $password){
         $this->lName = $lName;
         $this->fName = $fName;
         $this->birthDate = $bDate;
@@ -15,8 +16,8 @@ class User{
         $this->password = $password;
     }
 
-
-    public function getId(): string { return $this->idUser; }
+        
+    public function getId(): int {return $this->default; }
     public function getlName(): string { return $this->lName; }
     public function getfName(): string { return $this->fName; }
     public function getBirthDate(): string { return $this->birthDate; }
@@ -34,5 +35,8 @@ class User{
                                             $this->weight. " ". 
                                             $this->fNeMailame.
                                             $this->password;}
+    public function setId(int $id): void {$this->default = $id; }
+
+
 }
 ?>

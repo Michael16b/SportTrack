@@ -3,8 +3,7 @@ class Data{
 
     public function  __construct() { }
     
-    public function init($id,$st,$du,$dis,$cFreqMin,$cFreqAvg,$cFreqMax, $long,$lat,$alt, $idAct){
-        $this->idData = $id;
+    public function init($st,$du,$dis,$cFreqMin,$cFreqAvg,$cFreqMax, $long,$lat,$alt, $idAct){
         $this->startTime = $st;
         $this->duration = $du;
         $this->distance = $dis;
@@ -18,7 +17,7 @@ class Data{
     }
 
 
-    public function getId(): string { return $this->idData; }
+    public function getId(): string { return $this->default; }
     public function getStartTime(): string { return $this->startTime; }
     public function getDuration(): string { return $this->duration; }
     public function getDistance(): string { return $this->distance; }
@@ -29,6 +28,7 @@ class Data{
     public function getLatitude(): string { return $this->latitude; }
     public function getAltitude(): string { return $this->altitude; }
     public function getIdAct(): string { return $this->idAct; }
+    public function setId(int $id): void {$this->default = $id; }
 
     public function  __toString(): string { return $this->idData.
         $this->startTime. " ". 

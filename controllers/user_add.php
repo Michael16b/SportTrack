@@ -1,5 +1,7 @@
 <?php
 require(__ROOT__.'/controllers/Controller.php');
+require(__ROOT__.'/php/UserDAO.php');
+require(__ROOT__.'/php/User.php');
 
 class AddUserController extends Controller{
 
@@ -17,6 +19,11 @@ class AddUserController extends Controller{
                                         'mail' => $request['mail'],
                                         'password' => $request['password']
                                     ]);
+    $userDAO = UserDAO::getInstance();
+    $user = new User();
+    $user -> init($request['surname'],$request['name'],$request['date'],$request['gender'],$request['size'],$request['weight'],$request['mail'],$request['password']);
+    UserDAO::getInstance()->insert($user);
     }
+    
 }
 ?>

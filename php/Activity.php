@@ -2,8 +2,7 @@
 class Activity{
 
     public function  __construct() { }
-    public function init($id,$desc,$d,$idU){
-        $this->idAct = $id;
+    public function init($desc,$d,$idU){
         $this->description = $desc;
         $this->date = $d;
         $this->idUser = $idU;
@@ -11,10 +10,11 @@ class Activity{
     }
 
 
-    public function getId(): string { return $this->idAct; }
+    public function getId(): int {return $this->default; }
     public function getDesc(): string { return $this->description; }
     public function getDate(): string { return $this->date; }
     public function getIdUser(): string { return $this->idUser; }
+    public function setId(int $id): void {$this->default = $id; }
     
     public function  __toString(): string { return $this->idData.
         $this->idAct. " ". 

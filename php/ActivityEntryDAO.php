@@ -24,12 +24,11 @@ class ActivityEntryDAO {
         if($st instanceof Data){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "insert into Data(idData,startTime,duration,distance,cardiacFreqMin,cardiacFreqAvg, cardiacFreqMax, longitude, latitude,altitude, idAct) 
-                        values (:id,:startT,:du,:dis,:cFreqMin,:cFreqAvg,:cFreqMax,:long,:lat,:alt,:idAct)";
+            $query = "insert into Data(startTime,duration,distance,cardiacFreqMin,cardiacFreqAvg, cardiacFreqMax, longitude, latitude,altitude, idAct) 
+                        values (:startT,:du,:dis,:cFreqMin,:cFreqAvg,:cFreqMax,:long,:lat,:alt,:idAct)";
             $stmt = $dbc->prepare($query);
 
             // bind the paramaters
-            $stmt->bindValue(':id',$st->getId(),PDO::PARAM_STR);
             $stmt->bindValue(':startT',$st->getStartTime(),PDO::PARAM_STR);
             $stmt->bindValue(':du',$st->getDuration(),PDO::PARAM_STR);
             $stmt->bindValue(':dis',$st->getDistance(),PDO::PARAM_STR);
@@ -41,13 +40,11 @@ class ActivityEntryDAO {
             $stmt->bindValue(':alt',$st->getAltitude(),PDO::PARAM_STR);
             $stmt->bindValue(':idAct',$st->getIdAct(),PDO::PARAM_STR);
             
-            
-            
-            
-            
-
             // execute the prepared statement
             $stmt->execute();
+
+            $lastId = $dbc -> lastInsertId();
+            $st -> setId($lastId);
         }
     }
 

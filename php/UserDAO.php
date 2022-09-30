@@ -24,12 +24,11 @@ class UserDAO {
         if($st instanceof User){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "insert into User(idUser,lName,fName,birthDate,gender,size, weight, eMail, password) 
-                        values (:id,:n,:fN,:birthD,:gd,:sz,:wght,:mail,:pwd)";
+            $query = "insert into User(lName,fName,birthDate,gender,size, weight, eMail, password) 
+                        values (:n,:fN,:birthD,:gd,:sz,:wght,:mail,:pwd)";
             $stmt = $dbc->prepare($query);
 
             // bind the paramaters
-            $stmt->bindValue(':id',$st->getId(),PDO::PARAM_STR);
             $stmt->bindValue(':n',$st->getlName(),PDO::PARAM_STR);
             $stmt->bindValue(':fN',$st->getfName(),PDO::PARAM_STR);
             $stmt->bindValue(':birthD',$st->getBirthDate(),PDO::PARAM_STR);
@@ -38,19 +37,18 @@ class UserDAO {
             $stmt->bindValue(':wght',$st->getWeight(),PDO::PARAM_STR);
             $stmt->bindValue(':mail',$st->getMail(),PDO::PARAM_STR);
             $stmt->bindValue(':pwd',$st->getPassword(),PDO::PARAM_STR);
-            
-            
-            
-            
-            
 
             // execute the prepared statement
             $stmt->execute();
+
+            $lastId = $dbc -> lastInsertId();
+            $st -> setId($lastId);
         }
     }
 
     public function delete(User $obj): void {
         if($obj instanceof User){
+            $id = $obj -> getId();
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
             $query = "delete from User where idUser = :id";

@@ -24,18 +24,20 @@ class ActivityDAO {
         if($st instanceof Activity){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "insert into Activities(idAct,description,date,idUser) 
-                        values (:id,:desc,:date,:idUser)";
+            $query = "insert into Activities(description,date,idUser) 
+                        values (:desc,:date,:idUser)";
             $stmt = $dbc->prepare($query);
 
             // bind the paramaters
-            $stmt->bindValue(':id',$st->getId(),PDO::PARAM_STR);
             $stmt->bindValue(':desc',$st->getDesc(),PDO::PARAM_STR);
             $stmt->bindValue(':date',$st->getDate(),PDO::PARAM_STR);
             $stmt->bindValue(':idUser',$st->getIdUser(),PDO::PARAM_STR);
 
             // execute the prepared statement
             $stmt->execute();
+
+            $lastId = $dbc -> lastInsertId();
+            $st -> setId($lastId);
         }
     }
 
