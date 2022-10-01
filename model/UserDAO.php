@@ -24,12 +24,12 @@ class UserDAO {
 
     public final function findUser(string $mail, string $password): Array{
         $dbc = SqliteConnection::getInstance()->getConnection();
-        $query = "select * from User where mail = :mail and password = :pwd";
+        $query = "select * from User where email = :mail and password = :pwd";
         $stmt = $dbc->query($query);
         
         
-        $stmt->bindValue(':mail',$st->getMail(),PDO::PARAM_STR);
-        $stmt->bindValue(':pwd',$st->getPassword(),PDO::PARAM_STR);
+        $stmt->bindValue(':mail',$mail,PDO::PARAM_STR);
+        $stmt->bindValue(':pwd',$password,PDO::PARAM_STR);
 
         $stmt->execute();
         $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'User');

@@ -4,12 +4,8 @@ require(__ROOT__.'/controllers/Controller.php');
 class DisconnectUserController extends Controller{
 
     public function get($request){
-        $this->render('apropos',[]);
+        $this->render('disconnect_info',[]);
         session_destroy();
-    }
-
-    public function post($request){
-        $this->render('apropos',[$request['firstname'],request['lastname']]);
     }
 }
 ?>
