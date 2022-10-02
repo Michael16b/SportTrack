@@ -16,11 +16,13 @@ class UploadActivityController extends Controller{
 
     public function post($request){
         if ($_SESSION) {
+
             $nameJsonFile = $request['myfile'];
             $json  = file_get_contents($nameJsonFile);
             $jsonData = json_decode($json,true);
             $arrayData = array();
             $arrayActivity = array();
+
             foreach($jsonData as $key => $value) {
                 if ($key == "activity") {
                     array_push($arrayActivity, $value['description'], $value['date']);
@@ -33,7 +35,11 @@ class UploadActivityController extends Controller{
                     $this->render('error',["Erreur de format de fichier"]);
                 }
             }
-            $this->render('upload_activity_valid',[$arrayActivity,$arrayData]);
+            
+
+            
+
+            $this->render('upload_activity_valid',[$arrayActivity]);
         } else {
             $this->render('user_connect_form',[]);
         }
