@@ -17,14 +17,24 @@ class ConnectUserController extends Controller{
             $status = session_status();
             if($status == PHP_SESSION_NONE){
                 session_start();
+
             } else if ($status == PHP_SESSION_ACTIVE){
                 session_destroy();
                 $_SESSION['user'] = $user;
                 session_start();
-                $this->render('connect_info', [$user[0] -> getlName(), $user[0] -> getfName()]);
-        } 
+                $this->render('user_connect_valid', [$user[0] -> getlName(), $user[0] -> getfName()]);
+        
+            }
+        $_SESSION['surname'] =  $user[0] -> getlName();
+        $_SESSION['name'] =  $user[0] -> getfName();
+        $_SESSION['date'] =  $user[0] -> getBirthDate();
+        $_SESSION['gender'] =  $user[0] -> getGender();
+        $_SESSION['size'] =  $user[0] -> getSize();
+        $_SESSION['weight'] =  $user[0] -> getWeight();
+        $_SESSION['mail'] =  $request['mail'];
+        $_SESSION['password'] =  $request['password']; 
     } else{
-            $this->render('connect_info',[null,null]);
+            $this->render('user_connect_valid',[null,null]);
         }
         
     }

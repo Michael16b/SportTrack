@@ -3,7 +3,7 @@
 
 
 <?php
-echo "Votre compte a été crée";
+echo "Votre compte a été modifié";
 echo "<br/>";
 ?>
 

@@ -110,11 +110,10 @@ class UserDAO {
         if($obj instanceof User){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "update User set lName = :n , fName = :fN, birthDate = :birthD, gender = :gd, size = :sz, weight = :wght, eMail= :mail, password = :pwd   WHERE idUser = :id";
+            $query = "update User set lName = :n , fName = :fN, birthDate = :birthD, gender = :gd, size = :sz, weight = :wght, eMail= :mail, password = :pwd  WHERE eMail = :mail";
             $stmt = $dbc->prepare($query);
 
             // bind the paramaters
-            $stmt->bindValue(':id',$obj->getId(),PDO::PARAM_STR);
             $stmt->bindValue(':n',$obj->getlName(),PDO::PARAM_STR);
             $stmt->bindValue(':fN',$obj->getfName(),PDO::PARAM_STR);
             $stmt->bindValue(':birthD',$obj->getBirthDate(),PDO::PARAM_STR);

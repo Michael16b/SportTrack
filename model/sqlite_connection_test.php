@@ -37,7 +37,7 @@ $user2 = new User();
 
 echo "verif de l'initation d'une ligne de bd :";
 $user1 -> init("LEBOUCHER","Naël","16/04/2003","M",18.0,50,"leboucher.nael@kaz.bzh","coucou");
-$user2 -> init("Théthé","Théo","06/10/2003","M",18.0,50,"théo.poulain@kaz.bzh","j_adore_la_bretagne");
+$user2 -> init("Théthé","Théo","06/10/2003","M",18.0,50,"theo.poulain@kaz.bzh","j_adore_la_bretagne");
 
 UserDAO::getInstance()->insert($user1);
 UserDAO::getInstance()->insert($user2);
@@ -173,7 +173,7 @@ var_dump($res);
 
 echo "verif de la recherche d'utilisateur :";
 $name = UserDAO::getInstance()->findUser("theo.poulain@kaz.bzh","j_adore_la_bretagne");
-var_dump($name);
+var_dump($name[0]);
 
 
 echo "verif de la recherche du nom et prénom de l'utilisateur :";
