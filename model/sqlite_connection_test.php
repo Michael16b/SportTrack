@@ -66,6 +66,17 @@ var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
 
 
+echo "verif de la recherche d'utilisateur :";
+$name = UserDAO::getInstance()->findUser("theo.poulain@kaz.bzh","j_adore_la_bretagne");
+var_dump($name[0]);
+
+
+echo "verif de la recherche du nom et prénom de l'utilisateur :";
+var_dump($name[0]->getlName());
+var_dump($name[0]->getfName());
+
+
+
 
 
 // Activities
@@ -171,11 +182,13 @@ var_dump($res);
 
 
 
-echo "verif de la recherche d'utilisateur :";
-$name = UserDAO::getInstance()->findUser("theo.poulain@kaz.bzh","j_adore_la_bretagne");
-var_dump($name[0]);
+echo 'Suppression de tous les utilisateur. ';
+UserDAO::getInstance()->deleteAll($user1);
 
 
-echo "verif de la recherche du nom et prénom de l'utilisateur :";
-var_dump($name[0]->getlName());
-var_dump($name[0]->getfName());
+echo 'Suppression de tous les données. ';
+ActivityEntryDAO::getInstance()->deleteAll($data1);
+
+
+echo 'Suppression de tous les activités. ';
+ActivityDAO::getInstance()->deleteAll($activity1);

@@ -5,7 +5,7 @@ include VIEWS_DIR."/header.html";
 
 <form action="/user_update" method="post" >
         <fieldset>
-            <legend>Information inscription</legend>
+            <legend> Modification information inscription</legend>
             <div>
                 <label for="surname">Nom : </label>
                 <input type="text" id="surname" name="surname" maxlengh="40" value="<?php  echo($_SESSION["surname"])?>" />
@@ -20,7 +20,7 @@ include VIEWS_DIR."/header.html";
             <legend>Information personnelle</legend>
             <div>
                 <label for="dateNaissance">Date de Naissance :</label>
-                <input id="date"  type="date" name="date" >
+                <input id="date"  type="date" name="date" value="<?php  echo($_SESSION["date"])?>">
             </div>
             <div>
                 <label for="gender">Genre : </label>
@@ -41,7 +41,7 @@ include VIEWS_DIR."/header.html";
             </div>
         </fieldset>
         <fieldset>
-            <legend>Création de compte</legend>
+            <legend>Modification d'adresse mail et mot de passe</legend>
             <div>
                 <label for="mail">Adresse e-mail :</label>
                 <input type="email" id="email" name="mail" pattern="[^ @]*@[^ @]*" placeholder="michael@example.com" value="<?php  echo($_SESSION["mail"])?>">

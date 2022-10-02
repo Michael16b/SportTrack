@@ -17,6 +17,7 @@ class User{
 
         
     public function getId(): int {return $this->default; }
+    public function getIdUser(): int {return $this->idUser; }
     public function getlName(): string { return $this->lName; }
     public function getfName(): string { return $this->fName; }
     public function getBirthDate(): string { return $this->birthDate; }

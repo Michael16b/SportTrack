@@ -36,8 +36,10 @@ class UploadActivityController extends Controller{
                 }
             }
             
+            $activity = new Activity();
+            $activity -> init($arrayActivity[0],$arrayActivity[1],$_SESSION['user']->getId());
+            ActivityDAO::getInstance()->insert($activity);
 
-            
 
             $this->render('upload_activity_valid',[$arrayActivity]);
         } else {

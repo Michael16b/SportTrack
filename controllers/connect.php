@@ -25,6 +25,7 @@ class ConnectUserController extends Controller{
                 $this->render('user_connect_valid', [$user[0] -> getlName(), $user[0] -> getfName()]);
         
             }
+        $_SESSION['idUser'] =  $user[0] -> getIdUser();
         $_SESSION['surname'] =  $user[0] -> getlName();
         $_SESSION['name'] =  $user[0] -> getfName();
         $_SESSION['date'] =  $user[0] -> getBirthDate();

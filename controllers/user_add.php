@@ -20,7 +20,7 @@ class AddUserController extends Controller{
                                         'password' => $request['password']
                                     ]);
 
-    $userDAO = UserDAO::getInstance();
+
     $user = new User();
     $user -> init($request['surname'],$request['name'],$request['date'],$request['gender'],$request['size'],$request['weight'],$request['mail'],$request['password']);
     UserDAO::getInstance()->insert($user);  
