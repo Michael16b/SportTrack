@@ -67,13 +67,14 @@ class UploadActivityController extends Controller{
             }
             $classCalc = new CalculDistanceImpl();
             $distance = $classCalc->calculDistanceTrajet($arrayDistance);
-            $idActivity = $activity->getIdA;
+            $activity = ActivityDAO::getInstance()->findActivity($activity);
+            $idActivity = $activity[0] -> getIdActivity();
             $data = new Data();
             $arrayData = array_values($arrayData);
             $data -> init($arrayData[0][0],$duration,$distance,$minCardio,$avgCardio,$maxCardio,$arrayData[0][3],$arrayData[0][2],$arrayData[0][4],$idActivity);
             
             ActivityEntryDAO::getInstance()->insert($data);
-            $this->render('upload_activity_valid',[$arrayActivity,$arrayData,$duration,$minCardio,$avgCardio,$maxCardio,$distance]);
+            $this->render('upload_activity_valid',[]);
         } else {
             $this->render('user_connect_form',[]);
         }

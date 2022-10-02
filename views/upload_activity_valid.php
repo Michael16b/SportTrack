@@ -26,18 +26,6 @@ foreach ($data[0] as $value) {
         $i++;
     }
 }
-print_r($data[1]);
-echo "<br>";
-print_r($data[2]);
-echo "<br>";
-print_r($data[3]);
-echo "<br>";
-print_r($data[4]);
-echo "<br>";
-print_r($data[5]);
-echo "<br>";
-print_r($data[6]);
-
 
 include __ROOT__."/views/footer.html";
 ?>
