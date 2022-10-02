@@ -7,7 +7,7 @@ require(__ROOT__.'/model/User.php');
 class ConnectUserController extends Controller{
 
     public function get($request){
-        $this->render('connect_form',[]);
+        $this->render('user_connect_form',[]);
         //var_dump($COOKIES);
     }
 
