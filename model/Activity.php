@@ -11,6 +11,7 @@ class Activity{
 
 
     public function getId(): int {return $this->default; }
+    public function getIdActivity(): int {return $this->idAct; }
     public function getDesc(): string { return $this->description; }
     public function getDate(): string { return $this->date; }
     public function getIdUser(): string { return $this->idUser; }

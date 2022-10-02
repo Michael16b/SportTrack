@@ -5,6 +5,7 @@ require_once (__ROOT__.'/model/Activity.php');
 require_once (__ROOT__.'/model/Data.php');
 require_once (__ROOT__.'/model/ActivityDAO.php');
 require_once (__ROOT__.'/model/ActivityEntryDAO.php');
+require_once (__ROOT__.'/model/CalculDistanceImpl.php');
 
 
 
@@ -40,8 +41,39 @@ class UploadActivityController extends Controller{
             $activity -> init($arrayActivity[0],$arrayActivity[1],$_SESSION['idUser']);
             ActivityDAO::getInstance()->insert($activity);
 
+            $duration =  strtotime($arrayData[count($arrayData)-1][0]) - strtotime($arrayData[0][0]);
+            $duration =  date('H:i:s', $duration);
+            
 
-            $this->render('upload_activity_valid',[$arrayActivity]);
+            $minCardio = $arrayData[0][1];
+            $avgCardio = $arrayData[0][1];
+            $maxCardio = $arrayData[0][1];
+            for ($i=1; $i < count($arrayData); $i++) { 
+                if ($arrayData[$i][1] < $minCardio) {
+                    $minCardio = $arrayData[$i][1];
+                }
+                if ($arrayData[$i][1] > $maxCardio) {
+                    $maxCardio = $arrayData[$i][1];
+                }
+                $avgCardio += $arrayData[$i][1];
+            }
+            $avgCardio = $avgCardio / count($arrayData);
+            
+
+            
+            $arrayDistance = array();
+            for ($i=0; $i < count($arrayData); $i++) { 
+                $arrayDistance[] = array("longitude" => $arrayData[$i][3], "latitude" => $arrayData[$i][2]);
+            }
+            $classCalc = new CalculDistanceImpl();
+            $distance = $classCalc->calculDistanceTrajet($arrayDistance);
+            $idActivity = $activity->getIdA;
+            $data = new Data();
+            $arrayData = array_values($arrayData);
+            $data -> init($arrayData[0][0],$duration,$distance,$minCardio,$avgCardio,$maxCardio,$arrayData[0][3],$arrayData[0][2],$arrayData[0][4],$idActivity);
+            
+            ActivityEntryDAO::getInstance()->insert($data);
+            $this->render('upload_activity_valid',[$arrayActivity,$arrayData,$duration,$minCardio,$avgCardio,$maxCardio,$distance]);
         } else {
             $this->render('user_connect_form',[]);
         }

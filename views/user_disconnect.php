@@ -1,7 +1,7 @@
 <?php include __ROOT__."/views/header.html"; ?>
 
 
-<p>Vous avez été déconnecter avec succès</p>
+<p>Vous avez été déconnecté avec succès</p>
 <button name="button" onclick="location.href='/'">Page d'accueil</button>
 
             

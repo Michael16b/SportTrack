@@ -106,6 +106,10 @@ var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
 
 
+echo "verif de la recherche d'ID :";
+$activity = ActivityDAO::getInstance()->findActivity($activity2);
+var_dump($activity);
+
 
 
 echo 'verif de de la suppression :';
@@ -183,7 +187,7 @@ var_dump($res);
 
 
 echo 'Suppression de tous les utilisateurs. ';
-UserDAO::getInstance()->deleteAll($user1);
+//UserDAO::getInstance()->deleteAll($user1);
 
 
 echo 'Suppression de toutes les données. ';

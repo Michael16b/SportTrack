@@ -16,7 +16,7 @@ class ActivityDAO {
         $dbc = SqliteConnection::getInstance()->getConnection();
         $query = "select * from Activities order by idAct";
         $stmt = $dbc->query($query);
-        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'Activities');
+        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'Activity');
         return $results;
     }
 
@@ -85,6 +85,26 @@ class ActivityDAO {
             // execute the prepared statement
             $stmt->execute();
         }
+    }
+
+    public final function findActivity(Activity $obj): Array{
+        $dbc = SqliteConnection::getInstance()->getConnection();
+        $query = "select * from Activities where idUser = :idUser and description = :desc and date = :date";
+        $stmt = $dbc->query($query);
+        
+        
+
+        // bind the paramaters
+        $stmt->bindValue(':desc',$obj->getDesc(),PDO::PARAM_STR);
+        $stmt->bindValue(':date',$obj->getDate(),PDO::PARAM_STR);
+        $stmt->bindValue(':idUser',$obj->getIdUser(),PDO::PARAM_STR);
+
+
+        $stmt -> execute();
+        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'Activity');
+
+        // execute the prepared statement
+        return $results;
     }
 }
 ?>
