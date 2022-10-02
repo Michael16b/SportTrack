@@ -182,13 +182,13 @@ var_dump($res);
 
 
 
-echo 'Suppression de tous les utilisateur. ';
+echo 'Suppression de tous les utilisateurs. ';
 UserDAO::getInstance()->deleteAll($user1);
 
 
-echo 'Suppression de tous les données. ';
+echo 'Suppression de toutes les données. ';
 ActivityEntryDAO::getInstance()->deleteAll($data1);
 
 
-echo 'Suppression de tous les activités. ';
+echo 'Suppression de toutes les activités. ';
 ActivityDAO::getInstance()->deleteAll($activity1);

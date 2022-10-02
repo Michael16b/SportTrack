@@ -13,18 +13,7 @@ foreach ($data[0] as $value) {
     }
 }
 
-foreach($data[1] as $value){
-    foreach($value as $value2) {
-        if (!$DataBlock) {
-            if ($value2 == null) {
-                echo "Aucune donnée n'a été trouvée";
-                $DataBlock = true;
-            }
-        }
-    }
-}
-
-echo "<h2> Voici l'activité avec les données qui ont été ajouté à votre liste </h2>";
+echo "<h2> Voici l'activité qui a été ajouté à votre liste </h2>";
 
 $i = 0;
 foreach ($data[0] as $value) {

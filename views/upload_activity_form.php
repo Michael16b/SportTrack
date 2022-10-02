@@ -1,6 +1,7 @@
 <?php include __ROOT__."/views/header.html"; ?>
 
 
+
 <form action="/upload" method="post" >
     <head>
         <title>Upload a json file</title>
@@ -16,5 +17,6 @@
             <input type="submit" />
         </form>
         <button name="button" onclick="location.href='/'">Retour</button>
-    </body>     
+    </body>
+
 <?php include __ROOT__."/views/footer.html"; ?>
