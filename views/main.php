@@ -1,4 +1,10 @@
 <?php include __ROOT__."/views/header.html"; ?>
+
+<?php
+if ($_SESSION) {
+    echo "<h2> Bonjour " . $_SESSION["surname"] . " " . $_SESSION["name"] . " </h2>";
+}
+?>
 <h1> Main page</h1>
 <a href="/connect">Click here to display the connection form.</a>
 <br></br>
