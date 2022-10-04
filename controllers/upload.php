@@ -1,5 +1,5 @@
 <?php
-require(__ROOT__.'/controllers/Controller.php');
+require(CONTROLLERS_DIR.'/Controller.php');
 require_once (__ROOT__.'/model/User.php');
 require_once (__ROOT__.'/model/Activity.php');
 require_once (__ROOT__.'/model/Data.php');

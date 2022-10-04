@@ -1,5 +1,5 @@
 <?php
-require(__ROOT__.'/controllers/Controller.php');
+require(CONTROLLERS_DIR.'/Controller.php');
 require(__ROOT__.'/model/UserDAO.php');
 require(__ROOT__.'/model/User.php');
 
