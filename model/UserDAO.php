@@ -79,7 +79,6 @@ class UserDAO {
 
     public function delete(User $obj): void {
         if($obj instanceof User){
-            $id = $obj -> getId();
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
             $query = "delete from User where idUser = :id";
@@ -94,16 +93,14 @@ class UserDAO {
     }
 
 
-    public function deleteAll(User $obj): void {
-        if($obj instanceof User){
-            $dbc = SqliteConnection::getInstance()->getConnection();
-            // prepare the SQL statement
-            $query = "delete from User";
-            $stmt = $dbc->prepare($query);
+    public function deleteAll(): void {
+        $dbc = SqliteConnection::getInstance()->getConnection();
+        // prepare the SQL statement
+        $query = "delete from User";
+        $stmt = $dbc->prepare($query);
 
-            // execute the prepared statement
-            $stmt->execute();
-        }
+        // execute the prepared statement
+        $stmt->execute();
     }
 
     public function update(User $obj): void {

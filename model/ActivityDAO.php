@@ -62,16 +62,11 @@ class ActivityDAO {
     }
 
 
-    public function deleteAll(Activity $obj): void {
-        if($obj instanceof Activity){
-            $dbc = SqliteConnection::getInstance()->getConnection();
-            // prepare the SQL statement
-            $query = "delete from Activities";
-            $stmt = $dbc->prepare($query);
-
-            // execute the prepared statement
-            $stmt->execute();
-        }
+    public function deleteAll(): void {
+        $dbc = SqliteConnection::getInstance()->getConnection();
+        $query = "delete from Activities";
+        $stmt = $dbc->prepare($query);
+        $stmt->execute();
     }
 
     public function update(Activity $obj): void {
