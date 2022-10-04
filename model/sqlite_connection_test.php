@@ -94,8 +94,8 @@ var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
 
 echo "verif de l'initation d'une ligne de bd :";
-$activity1 -> init("Basket-Ball","18/08/2022",$user2->getId());
-$activity2 -> init("FootBall","18/08/2022",$user2->getId());
+$activity1 -> init("Basket-Ball","18/08/2022","00:10:00",10,75,110,150,$user2->getId());
+$activity2 -> init("FootBall","18/08/2022","00:15:00",15,80,103,143,$user2->getId());
 
 ActivityDAO::getInstance()->insert($activity1);
 ActivityDAO::getInstance()->insert($activity2);
@@ -121,8 +121,7 @@ var_dump($res);
 
 echo "verif de la mise à jour d'une ligne de bd :";
 
-
-$activity2 -> init("Ultimate","20/08/2022",$user2->getId());
+$activity2 -> init("Ultimate","20/08/2022","00:20:00",15,80,103,143,$user2->getId());
 ActivityDAO::getInstance()->update($activity2);
 
 var_dump($SQLiteConnect->query($query)->fetchAll());
@@ -133,8 +132,7 @@ var_dump($res);
 
 
 // Activity -> Re-insert
-
-$activity1 -> init("Basket-Ball","18/08/2022",$user2->getId());
+$activity1 -> init("Basket-Ball","18/08/2022","00:10:00",10,75,110,150,$user2->getId());
 ActivityDAO::getInstance()->insert($activity1);
 
 
@@ -153,8 +151,8 @@ var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
 
 echo "verif de l'initation d'une ligne de bd :";
-$data1 -> init("13:00:00","00:10:00",10,75,110,150,-2.776605,47.644795,18, $activity1->getId());
-$data2 -> init("15:00:00","00:15:00",15,80,103,143, -2.776605,47.646870,15, $activity2->getId());
+$data1 -> init("13:00:00",-2.776605,47.644795,18, $activity1->getId());
+$data2 -> init("15:00:00", -2.776605,47.646870,15, $activity2->getId());
 
 ActivityEntryDAO::getInstance()->insert($data1);
 ActivityEntryDAO::getInstance()->insert($data2);
@@ -176,7 +174,8 @@ var_dump($res);
 echo "verif de la mise à jour d'une ligne de bd :";
 
 
-$data2 -> init("18:00:00","00:20:00",15,80,103,143, -2.776605,47.646870,15, $activity2->getId());
+$data2 -> init("20:00:00", -2.776605,47.646870,15, $activity2->getId());
+
 ActivityEntryDAO::getInstance()->update($data2);
 
 var_dump($SQLiteConnect->query($query)->fetchAll());
