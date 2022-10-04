@@ -24,7 +24,8 @@ class UploadActivityController extends Controller{
                 $arrayData = array();
                 $arrayActivity = array();
 
-                if (count($jsonData) > 0) {
+                if (is_countable($jsonData)) {
+                    if (count($jsonData) > 0) {
                         foreach($jsonData as $key => $value) {
                             if ($key == "activity") {
                                 array_push($arrayActivity, $value['description'], $value['date']);
@@ -83,6 +84,9 @@ class UploadActivityController extends Controller{
                 } else {
                     $this->render('error',["Erreur de format de fichier"]);
                 }
+            } else {
+                $this->render('error',["Erreur de format de fichier"]);
+            }
                 } else {
                     $this->render('user_connect_form',[]); 
             } 
