@@ -19,7 +19,7 @@ class ListActivityController extends Controller{
                                 $value->getDistance(),
                                 $value->getCardiacFreqMin(),
                                 $value->getCardiacFreqAvg(),
-                                $value->getCardiacFreqMax()
+                                $value->getCardiacFreqMax(),
                             );
                             array_push($lActs,$data);
                         } 

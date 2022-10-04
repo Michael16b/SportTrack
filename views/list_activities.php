@@ -25,6 +25,8 @@ if ($data != []) {
             <td><?php echo($activity[3]) ?></td>
             <td><?php echo($activity[4]) ?></td>
             <td><?php echo($activity[5]) ?></td>
+            <td><?php echo($activity[6]) ?></td>
+            
         </tr>
         
         <?php
