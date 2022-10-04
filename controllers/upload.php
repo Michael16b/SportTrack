@@ -23,7 +23,7 @@ class UploadActivityController extends Controller{
             $jsonData = json_decode($json,true);
             $arrayData = array();
             $arrayActivity = array();
-
+            
             foreach($jsonData as $key => $value) {
                 if ($key == "activity") {
                     array_push($arrayActivity, $value['description'], $value['date']);
@@ -37,11 +37,9 @@ class UploadActivityController extends Controller{
                 }
             }
             
-            $activity = new Activity();
-            $activity -> init($arrayActivity[0],$arrayActivity[1],$_SESSION['idUser']);
-            ActivityDAO::getInstance()->insert($activity);
-
-            $duration =  strtotime($arrayData[count($arrayData)-1][0]) - strtotime($arrayData[0][0]);
+            
+            $startTime = $arrayData[0][0];
+            $duration =  strtotime($arrayData[count($arrayData)-1][0]) - strtotime($startTime);
             $duration =  date('H:i:s', $duration);
             
 
@@ -67,14 +65,19 @@ class UploadActivityController extends Controller{
             }
             $classCalc = new CalculDistanceImpl();
             $distance = $classCalc->calculDistanceTrajet($arrayDistance);
+
+            $activity = new Activity();
+            $activity -> init($arrayActivity[0],$arrayActivity[1],$duration,$distance,$minCardio,$avgCardio,$maxCardio,$_SESSION['idUser']);
+            ActivityDAO::getInstance()->insert($activity);
+
             $activity = ActivityDAO::getInstance()->findActivity($activity);
             $idActivity = $activity[0] -> getIdActivity();
             $data = new Data();
             $arrayData = array_values($arrayData);
-            $data -> init($arrayData[0][0],$duration,$distance,$minCardio,$avgCardio,$maxCardio,$arrayData[0][3],$arrayData[0][2],$arrayData[0][4],$idActivity);
+            $data -> init($startTime,$duration,$arrayData[0][3],$arrayData[0][2],$arrayData[0][4],$idActivity);
             
             ActivityEntryDAO::getInstance()->insert($data);
-            $this->render('upload_activity_valid',[]);
+            $this->render('upload_activity_valid',[$arrayActivity]);
         } else {
             $this->render('user_connect_form',[]);
         }

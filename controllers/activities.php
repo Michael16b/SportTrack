@@ -13,7 +13,13 @@ class ListActivityController extends Controller{
                     if($value->getIdUser() == $_SESSION['idUser']){
                         $data = array(
                             $value->getDesc(),
-                            $value->getDate());
+                            $value->getDate(),
+                            $value->getDuration(),
+                            $value->getDistance(),
+                            $value->getCardiacFreqMin(),
+                            $value->getCardiacFreqAvg(),
+                            $value->getCardiacFreqMax()
+                        );
                     } 
                     array_push($lActs,$data);
                 }
