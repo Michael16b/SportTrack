@@ -47,9 +47,10 @@ echo 'Insertion de 2 utilisateurs :';
 var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
 
+echo "verif de la recherche d'adresse mail:";
+var_dump(UserDAO::getInstance()->findMail("leboucher.nael@kaz.bzh"));
 
-
-echo 'verif de de la suppression :';
+echo 'verif de la suppression :';
 UserDAO::getInstance()->delete($user1);
 var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);

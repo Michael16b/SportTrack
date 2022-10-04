@@ -36,6 +36,25 @@ class UserDAO {
         return $results;
     }
 
+    public final function findMail(string $mail): bool{
+        $dbc = SqliteConnection::getInstance()->getConnection();
+        $query = "select * from User where email = :mail";
+        $stmt = $dbc->query($query);
+        
+        
+        $stmt->bindValue(':mail',$mail,PDO::PARAM_STR);
+
+        $stmt->execute();
+        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'User');
+
+        if (count($results) != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    
+
     public final function insert(User $st): void{
         if($st instanceof User){
 
