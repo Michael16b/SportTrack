@@ -1,4 +1,6 @@
-<?php include __ROOT__."/views/header.html"; ?>
+<?php 
+include VIEWS_DIR."/header.html";
+?>
 
 
 <form action="/user_add" method="post" >

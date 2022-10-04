@@ -1,4 +1,4 @@
-<?php include __ROOT__."/views/header.html"; ?>
+<?php include VIEWS_DIR."/header.html"; ?>
 
 
 
@@ -8,5 +8,4 @@ echo "<br/>";
 echo "<a href='/connect'>Connectez-vous désormais</a>";
 ?>
 
-            
-<?php include __ROOT__."/views/footer.html"; ?>
+<?php include VIEWS_DIR."/footer.html"; ?>

@@ -57,5 +57,5 @@ include VIEWS_DIR."/header.html";
 
         
 <?php 
-include __ROOT__."/views/footer.html";
+include VIEWS_DIR."/footer.html";
 ?>

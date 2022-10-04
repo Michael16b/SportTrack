@@ -1,4 +1,4 @@
-<?php include __ROOT__."/views/header.html"; ?>
+<?php include VIEWS_DIR."/header.html"; ?>
 <?php
 if ($_SESSION) {
     echo "<h5>ATTENTION, vous êtes déjà connecté en tant que : " . $_SESSION["surname"] . " " . $_SESSION["name"] . " </h5>";
@@ -20,4 +20,4 @@ if ($_SESSION) {
 <input type="submit" value="Valider"><br>
 </form>
             
-<?php include __ROOT__."/views/footer.html"; ?>
+<?php include VIEWS_DIR."/footer.html"; ?>

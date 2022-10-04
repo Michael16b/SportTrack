@@ -1,5 +1,5 @@
 <?php
-include __ROOT__."/views/header.html";
+include VIEWS_DIR."/header.html";
 
 $activitiesBlock = false;
 $DataBlock = false;
@@ -27,5 +27,5 @@ foreach ($data[0] as $value) {
     }
 }
 
-include __ROOT__."/views/footer.html";
+include VIEWS_DIR."/footer.html";
 ?>

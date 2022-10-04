@@ -1,5 +1,5 @@
 <?php
-include __ROOT__."/views/header.html";
+include VIEWS_DIR."/header.html";
 
 
 if ($data[0] != null && $data[1] != null){
@@ -14,5 +14,5 @@ if ($data[0] != null && $data[1] != null){
         echo "<a href='?action=connect'>Se connecter</a>";
 }
 
-include __ROOT__."/views/footer.html";
+include VIEWS_DIR."/footer.html";
 ?>

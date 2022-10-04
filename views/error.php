@@ -1,8 +1,8 @@
 <?php
-// header
-include __ROOT__."/views/header.html";
+
+include VIEWS_DIR."/header.html";
 
 echo $data[0];
 
-include __ROOT__."/views/footer.html";
+include VIEWS_DIR."/footer.html";
 ?>

@@ -1,4 +1,6 @@
-<?php include __ROOT__."/views/header.html"; ?>
+<?php 
+include VIEWS_DIR."/header.html";
+?>
 
 
 
@@ -9,4 +11,6 @@ echo "firstname = Michaël";
 ?>
 
             
-<?php include __ROOT__."/views/footer.html"; ?>
+<?php 
+include VIEWS_DIR."/footer.html";
+?>

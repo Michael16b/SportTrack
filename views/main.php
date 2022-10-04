@@ -1,4 +1,7 @@
-<?php include __ROOT__."/views/header.html"; ?>
+<?php 
+include VIEWS_DIR."/header.html";
+?>
+
 
 <?php
 
@@ -23,4 +26,6 @@ if ($_SESSION) {
 <?php if($_SESSION){ echo '<a href="/activities">List of activities</a>';}?>
 
             
-<?php include __ROOT__."/views/footer.html"; ?>
+<?php 
+include VIEWS_DIR."/footer.html";
+?>
