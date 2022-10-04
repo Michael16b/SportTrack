@@ -2,7 +2,7 @@
 include VIEWS_DIR."/header.html";
 ?>
 <?php
-if ($data != null) {
+if ($data != []) {
     ?>
 <table>
 

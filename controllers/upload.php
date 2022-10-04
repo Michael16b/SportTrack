@@ -18,6 +18,7 @@ class UploadActivityController extends Controller{
     public function post($request){
             if ($_SESSION) {
                 $nameJsonFile = $request['myfile'];
+                error_reporting(0);
                 $json  = file_get_contents($nameJsonFile);
                 $jsonData = json_decode($json,true);
                 
@@ -85,7 +86,7 @@ class UploadActivityController extends Controller{
                     $this->render('error',["Erreur de format de fichier"]);
                 }
             } else {
-                $this->render('error',["Erreur de format de fichier"]);
+                $this->render('error',["Erreur de format de fichier ou fichier non retrouvé : Essayer de le mettre dans le dossier racine du projet"]);
             }
                 } else {
                     $this->render('user_connect_form',[]); 
