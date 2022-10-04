@@ -16,7 +16,6 @@ class UploadActivityController extends Controller{
 
 
     public function post($request){
-        try {
             if ($_SESSION) {
                 $nameJsonFile = $request['myfile'];
                 $json  = file_get_contents($nameJsonFile);
@@ -82,15 +81,11 @@ class UploadActivityController extends Controller{
                     ActivityEntryDAO::getInstance()->insert($data);
                     $this->render('upload_activity_valid',[$arrayActivity]);
                 } else {
-                    $this->render('user_connect_form',[]);
+                    $this->render('error',["Erreur de format de fichier"]);
                 }
-        } else {
-            $this->render('error',["Erreur de format de fichier"]); 
-            }
-
-        } catch(Exception $e){
-            echo $e->getMessage();
+                } else {
+                    $this->render('user_connect_form',[]); 
+            } 
         }
     }
-}
 ?>
