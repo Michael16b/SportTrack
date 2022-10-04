@@ -9,7 +9,7 @@ if ($data != []) {
 <caption>Vos activités</caption>
 
 <tr align="center"> 
-    <th>| Description |</th> <th>| Date |</th> <th>| Durée |</th> <th>| Distance |</th> <th>| Fréquence Cardiaque Minimum |</th> 
+    <th>| Description |</th> <th>| Date |</th> <th>| Durée |</th> <th>| Heure de début |</th> <th>| Distance |</th> <th>| Fréquence Cardiaque Minimum |</th> 
     <th>| Fréquence Cardiaque Moyenne |</th> <th>| Fréquence Cardiaque Maximum |</th>
 </tr>
 
@@ -26,6 +26,7 @@ if ($data != []) {
             <td><?php echo($activity[4]) ?></td>
             <td><?php echo($activity[5]) ?></td>
             <td><?php echo($activity[6]) ?></td>
+            <td><?php echo($activity[7]) ?></td>
             
         </tr>
         

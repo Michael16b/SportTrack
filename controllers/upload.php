@@ -70,7 +70,7 @@ class UploadActivityController extends Controller{
                     $classCalc = new CalculDistanceImpl();
                     $distance = $classCalc->calculDistanceTrajet($arrayDistance);
                     $activity = new Activity();
-                    $activity -> init($arrayActivity[0],$arrayActivity[1],$duration,round($distance,2),$minCardio,$avgCardio,$maxCardio,$_SESSION['idUser']);
+                    $activity -> init($arrayActivity[0],$arrayActivity[1],$startTime,$duration,round($distance,2),$minCardio,$avgCardio,$maxCardio,$_SESSION['idUser']);
                     ActivityDAO::getInstance()->insert($activity);
 
                     $activity = ActivityDAO::getInstance()->findActivity($activity);

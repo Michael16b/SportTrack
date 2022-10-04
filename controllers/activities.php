@@ -15,6 +15,7 @@ class ListActivityController extends Controller{
                             $data = array(
                                 $value->getDesc(),
                                 $value->getDate(),
+                                $value->getStartTime(),
                                 $value->getDuration(),
                                 $value->getDistance(),
                                 $value->getCardiacFreqMin(),
