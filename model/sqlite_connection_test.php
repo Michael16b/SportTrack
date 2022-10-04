@@ -185,7 +185,6 @@ var_dump($res);
 
 
 
-
 echo 'Suppression de tous les utilisateurs. ';
 UserDAO::getInstance()->deleteAll($user1);
 

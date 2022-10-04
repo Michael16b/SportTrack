@@ -21,7 +21,7 @@ class Activity{
     public function getDate(): string { return $this->date; }
     public function getDuration(): string { return $this->duration; }
     public function getDistance(): string { return $this->distance; }
-    public function getCardiacFreqMin(): string { return $this->cardiacFreqMin; }
+    public function getCardiacFreqMin(): int { return $this->cardiacFreqMin; }
     public function getCardiacFreqAvg(): int { return $this->cardiacFreqAvg; }
     public function getCardiacFreqMax(): int { return $this->cardiacFreqMax; }
     public function getIdUser(): string { return $this->idUser; }
