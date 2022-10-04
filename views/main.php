@@ -10,9 +10,17 @@ if ($_SESSION) {
 }
 ?>
 <h1> Main page</h1>
-<a href="/connect">Click here to display the connection form.</a>
+<?php
+if (!$_SESSION) {
+    echo '<a href="/connect">Click here to display the connection form.</a>';
+}
+?>
 <br></br>
-<a href="/user_add">Add user</a>
+<?php
+if (!$_SESSION) {
+    echo '<a href="/user_add">Add user</a>';
+}
+?>
 <br></br>
 <?php if($_SESSION){ echo '<a href="/user_update">Click here to update your personnal information</a>';}?>
 <br></br>
