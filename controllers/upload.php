@@ -17,7 +17,7 @@ class UploadActivityController extends Controller{
 
     public function post($request){
         if ($_SESSION) {
-            $nameJsonFile = $request['myfile'];
+            $nameJsonFile =$request['myfile'];
             $json  = file_get_contents($nameJsonFile);
             $jsonData = json_decode($json,true);
             $arrayData = array();
