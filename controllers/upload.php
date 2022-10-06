@@ -32,9 +32,9 @@ class UploadActivityController extends Controller{
                                 if ($dateBlock == false) {
                                     if ($key == "activity") {
                                         $date = date('Y-m-d', strtotime($value['date']));
-                                        $date = new DateTime($date);
-                                        if ($date > $dateNow) {
-                                            $this->render('error',["La date de l'activité ne peut pas être supérieure à la date du jour \n"]);
+                                        $newDate = new DateTime($date);
+                                        if ($newDate > $dateNow || !($date) === $newDate) {
+                                            $this->render('error',["La date de l'activité ne peut pas être supérieure à la date du jour OU la date est invalide \n"]);
                                             $dateBlock = true;
                                             break;
                                         } else {
