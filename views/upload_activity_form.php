@@ -4,17 +4,15 @@ include VIEWS_DIR."/header.html";
 
 
 
-<form action="/upload" method="post" >
     <head>
         <title>Upload a json file</title>
     </head>
 
     <body>
-        <h1>Uplodez votre fichier json</h1>
-        <form action="/action_page.php" enctype="multipart/form-data">
-
+        <h1>Uploadez votre fichier json</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="myfile">Selectionner un fichier .JSON :</label>
-            <input type="file" id="myfile" name="myfile" accept="application/JSON" />
+            <input type="file" id="myfile" name="myfile" accept=".json" />
             <br /><br />
             <input type="submit" />
         </form>
