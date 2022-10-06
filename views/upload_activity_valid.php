@@ -13,7 +13,7 @@ foreach ($data[0] as $value) {
     }
 }
 
-echo "<h2> Voici l'activité qui a été ajouté à votre liste </h2>";
+echo "<h2> Voici l'activité qui a été ajouté à votre liste :</h2>";
 
 $i = 0;
 foreach ($data[0] as $value) {
