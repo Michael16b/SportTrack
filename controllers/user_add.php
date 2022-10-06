@@ -12,11 +12,7 @@ class AddUserController extends Controller{
     public function post($request){
         $allUsers = UserDAO::getInstance()->findAll();
         $mailExist = false;
-        foreach ($allUsers as $user) {
-            if ($user->getMail() == $request['mail']) {
-                $mailExist = true;
-            }
-        }
+        
         if (!$mailExist) {  
             $this->render('user_add_valid',['surname' => $request['surname'], 
                                             'name' => $request['name'],
