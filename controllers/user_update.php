@@ -29,6 +29,15 @@ class AddUserController extends Controller{
         $user = new User();
         $user -> init($request['surname'],$request['name'],$request['date'],$request['gender'],$request['size'],$request['weight'],$request['mail'],$request['password']);
         UserDAO::getInstance()->update($user);
+
+        $_SESSION['surname'] =  $request['surname'];
+        $_SESSION['name'] =  $request['name'];
+        $_SESSION['date'] =  $request['date'];
+        $_SESSION['gender'] =  $request['gender'];
+        $_SESSION['size'] =  $request['size'];
+        $_SESSION['weight'] =  $request['weight'];
+        $_SESSION['mail'] =  $request['mail'];
+        $_SESSION['password'] =  $request['password'];
         } else {
             $this->render('error',['Le mail existe déjà, veuillez choisir une autre adresse mail']);
             }
