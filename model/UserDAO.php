@@ -100,11 +100,11 @@ class UserDAO {
         if($obj instanceof User){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "delete from User where idUser = :id";
+            $query = "delete from User where email = :mail";
             $stmt = $dbc->prepare($query);
 
             // bind the paramaters
-            $stmt->bindValue(':id',$obj->getId(),PDO::PARAM_STR);
+            $stmt->bindValue(':mail',$obj->getMail(),PDO::PARAM_STR);
 
             // execute the prepared statement
             $stmt->execute();

@@ -20,6 +20,7 @@ ApplicationController::getInstance()->addRoute('user_update', CONTROLLERS_DIR.'/
 ApplicationController::getInstance()->addRoute('activities', CONTROLLERS_DIR.'/activities.php');
 ApplicationController::getInstance()->addRoute('upload', CONTROLLERS_DIR.'/upload.php');
 ApplicationController::getInstance()->addRoute('disconnect', CONTROLLERS_DIR.'/disconnect.php');
+ApplicationController::getInstance()->addRoute('user_delete', CONTROLLERS_DIR.'/user_delete.php');
 
 
 

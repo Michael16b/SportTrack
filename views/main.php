@@ -21,6 +21,8 @@ if ($_SESSION) {
 
 <?php if($_SESSION){ echo '<a href="/activities">List of activities</a> <br></br>';}?>
 
+<?php if($_SESSION){ echo '<a href="/user_delete">Delete my account</a> <br></br>';}?>
+
 
 
 <?php if (!$_SESSION) { echo '<a href="/connect">Click here to display the connection form.</a>';}
