@@ -23,17 +23,20 @@ class UploadActivityController extends Controller{
                     
                     $arrayData = array();
                     $arrayActivity = array();
-                    $dateTimeNow = new DateTime();
-                    $dateNow = $dateTimeNow->format('Y-m-d');
+                    $errorDate = new DateTime('1970-01-01');
+                    $dateTimeNow = new DateTime('now');
                     $dateBlock = false;
                     if (is_countable($jsonData)) {
                         if (count($jsonData) > 0) {
                             foreach($jsonData as $key => $value) {
                                 if ($dateBlock == false) {
                                     if ($key == "activity") {
-                                        $date = date('Y-m-d', strtotime($value['date']));
+                                        $tabDate = explode('/' , $value['date']);
+                                        $date  = $tabDate[2].'-'.$tabDate[1].'-'.$tabDate[0];
+                                        $date = date('Y-m-d', strtotime($date));
                                         $newDate = new DateTime($date);
-                                        if ($newDate > $dateNow || !($date) === $newDate) {
+                                        var_dump($errorDate == $newDate);
+                                        if ($newDate == $errorDate || $newDate > $dateTimeNow) {
                                             $this->render('error',["La date de l'activité ne peut pas être supérieure à la date du jour OU la date est invalide \n"]);
                                             $dateBlock = true;
                                             break;
