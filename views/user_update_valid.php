@@ -5,6 +5,7 @@
 <?php
 echo "Votre compte a été modifié";
 echo "<br/>";
+echo "<a href='/'>Allez sur la page d'accueil</a>";
 ?>
 
             
