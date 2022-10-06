@@ -1,5 +1,5 @@
 <?php
-require(__ROOT__.'/controllers/Controller.php');
+require(CONTROLLERS_DIR.'/Controller.php');
 
 class DisconnectUserController extends Controller{
 

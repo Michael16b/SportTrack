@@ -10,9 +10,7 @@ class AddUserController extends Controller{
     }
 
     public function post($request){
-        $allUsers = UserDAO::getInstance()->findAll();
-        $mailExist = false;
-        
+        $mailExist = UserDAO::getInstance()->findMail($request['mail']);
         if (!$mailExist) {  
             $this->render('user_add_valid',['surname' => $request['surname'], 
                                             'name' => $request['name'],
@@ -32,7 +30,7 @@ class AddUserController extends Controller{
             $user -> init($request['surname'],$request['name'],$request['date'],$request['gender'],$request['size'],$request['weight'],$request['mail'],$request['password']);
             UserDAO::getInstance()->insert($user);
             } else {
-                $this->render('error',['Le Mail existe déjà, veuillez choisir une autre adresse mail']);
+                $this->render('error',['Le mail existe déjà, veuillez choisir une autre adresse mail']);
             }
     }
     

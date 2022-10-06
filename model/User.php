@@ -36,7 +36,7 @@ class User{
                                             $this->gender. " ". 
                                             $this->size.
                                             $this->weight. " ". 
-                                            $this->fNeMailame.
+                                            $this->eMail.
                                             $this->password;}
     
 

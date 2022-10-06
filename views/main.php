@@ -10,19 +10,19 @@ if ($_SESSION) {
 }
 ?>
 <h1> Main page</h1>
-<?php if($_SESSION){ echo '<a href="/user_update">Click here to update your personnal information</a>';}?>
-<br></br>
-
-<?php if($_SESSION){ echo '<a href="/disconnect">Login out.</a>';}?>
-<br></br>
-<?php if($_SESSION){ echo '<a href="/apropos">Click here to display the name.</a>';}?>
-<br></br>
-<?php if($_SESSION){ echo '<a href="/upload">Upload activity and data</a>';}?>
-<br></br>
-<?php if($_SESSION){ echo '<a href="/activities">List of activities</a>';}?>
+<?php if($_SESSION){ echo '<a href="/user_update">Click here to update your personnal information</a> <br></br>' ;}?>
 
 
-<br></br>
+<?php if($_SESSION){ echo '<a href="/disconnect">Login out.</a> <br></br>';}?>
+
+<?php if($_SESSION){ echo '<a href="/apropos">Click here to display the name.</a> <br></br>';}?>
+
+<?php if($_SESSION){ echo '<a href="/upload">Upload activity and data</a> <br></br>';}?>
+
+<?php if($_SESSION){ echo '<a href="/activities">List of activities</a> <br></br>';}?>
+
+
+
 <?php if (!$_SESSION) { echo '<a href="/connect">Click here to display the connection form.</a>';}
 ?>
 <br></br>

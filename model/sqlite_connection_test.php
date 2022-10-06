@@ -47,9 +47,10 @@ echo 'Insertion de 2 utilisateurs :';
 var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
 
+echo "verif de la recherche d'adresse mail:";
+var_dump(UserDAO::getInstance()->findMail("leboucher.nael@kaz.bzh"));
 
-
-echo 'verif de de la suppression :';
+echo 'verif de la suppression :';
 UserDAO::getInstance()->delete($user1);
 var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
@@ -94,8 +95,8 @@ var_dump($SQLiteConnect->query($query)->fetchAll());
 var_dump($res);
 
 echo "verif de l'initation d'une ligne de bd :";
-$activity1 -> init("Basket-Ball","18/08/2022","00:10:00",10,75,110,150,$user2->getId());
-$activity2 -> init("FootBall","18/08/2022","00:15:00",15,80,103,143,$user2->getId());
+$activity1 -> init("Basket-Ball","18/08/2022","16:00:00","00:10:00",10,75,110,150,$user2->getId());
+$activity2 -> init("FootBall","18/08/2022","18:00:00","00:15:00",15,80,103,143,$user2->getId());
 
 ActivityDAO::getInstance()->insert($activity1);
 ActivityDAO::getInstance()->insert($activity2);
@@ -121,7 +122,7 @@ var_dump($res);
 
 echo "verif de la mise à jour d'une ligne de bd :";
 
-$activity2 -> init("Ultimate","20/08/2022","00:20:00",15,80,103,143,$user2->getId());
+$activity2 -> init("Ultimate","20/08/2022","18:00:00","00:20:00",15,80,103,143,$user2->getId());
 ActivityDAO::getInstance()->update($activity2);
 
 var_dump($SQLiteConnect->query($query)->fetchAll());
@@ -132,7 +133,7 @@ var_dump($res);
 
 
 // Activity -> Re-insert
-$activity1 -> init("Basket-Ball","18/08/2022","00:10:00",10,75,110,150,$user2->getId());
+$activity1 -> init("Basket-Ball","18/08/2022","13:00:00","00:10:00",10,75,110,150,$user2->getId());
 ActivityDAO::getInstance()->insert($activity1);
 
 

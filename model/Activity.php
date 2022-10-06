@@ -2,10 +2,11 @@
 class Activity{
 
     public function  __construct() { }
-    public function init($desc,$d,$du,$dis,$cFreqMin,$cFreqAvg,$cFreqMax,$idU){
+    public function init($desc,$d,$du,$st,$dis,$cFreqMin,$cFreqAvg,$cFreqMax,$idU){
         $this->description = $desc;
         $this->date = $d;
         $this->duration = $du;
+        $this->startTime = $st;
         $this->distance = $dis;
         $this->cardiacFreqMin = $cFreqMin;
         $this->cardiacFreqAvg = $cFreqAvg;
@@ -19,6 +20,7 @@ class Activity{
     public function getIdActivity(): int {return $this->idAct; }
     public function getDesc(): string { return $this->description; }
     public function getDate(): string { return $this->date; }
+    public function getStartTime(): string { return $this->startTime; }
     public function getDuration(): string { return $this->duration; }
     public function getDistance(): string { return $this->distance; }
     public function getCardiacFreqMin(): int { return $this->cardiacFreqMin; }
@@ -32,6 +34,7 @@ class Activity{
         $this->description. " ". 
         $this->distance. " ". 
         $this->date. " ".
+        $this->startTime. " ".
         $this->duration. " ". 
         $this->distance. " ". 
         $this->cardiacFreqMin. " ".

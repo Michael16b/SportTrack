@@ -1,5 +1,5 @@
 <?php
-require(__ROOT__.'/controllers/Controller.php');
+require(CONTROLLERS_DIR.'/Controller.php');
 require_once (__ROOT__.'/model/User.php');
 require_once (__ROOT__.'/model/Activity.php');
 require_once (__ROOT__.'/model/Data.php');
@@ -18,6 +18,7 @@ class UploadActivityController extends Controller{
     public function post($request){
             if ($_SESSION) {
                 $nameJsonFile = $request['myfile'];
+                error_reporting(0);
                 $json  = file_get_contents($nameJsonFile);
                 $jsonData = json_decode($json,true);
                 
@@ -68,9 +69,8 @@ class UploadActivityController extends Controller{
                     }
                     $classCalc = new CalculDistanceImpl();
                     $distance = $classCalc->calculDistanceTrajet($arrayDistance);
-
                     $activity = new Activity();
-                    $activity -> init($arrayActivity[0],$arrayActivity[1],$duration,$distance,$minCardio,$avgCardio,$maxCardio,$_SESSION['idUser']);
+                    $activity -> init($arrayActivity[0],$arrayActivity[1],$startTime,$duration,round($distance,2),$minCardio,$avgCardio,$maxCardio,$_SESSION['idUser']);
                     ActivityDAO::getInstance()->insert($activity);
 
                     $activity = ActivityDAO::getInstance()->findActivity($activity);
@@ -85,7 +85,7 @@ class UploadActivityController extends Controller{
                     $this->render('error',["Erreur de format de fichier"]);
                 }
             } else {
-                $this->render('error',["Erreur de format de fichier"]);
+                $this->render('error',["Erreur de format de fichier ou fichier non retrouvé : Essayer de le mettre dans le dossier racine du projet"]);
             }
                 } else {
                     $this->render('user_connect_form',[]); 

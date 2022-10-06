@@ -23,14 +23,13 @@ class ActivityDAO {
     public final function insert(Activity $st): void{
         if($st instanceof Activity){
             $dbc = SqliteConnection::getInstance()->getConnection();
-            // prepare the SQL statement
-            $query = "insert into Activities(description,date,duration,distance,cardiacFreqMin,cardiacFreqAvg, cardiacFreqMax,idUser) 
-                        values (:desc,:date,:du,:dis,:cFreqMin,:cFreqAvg,:cFreqMax,:idUser)";
+            $query = "insert into Activities(description,date,startTime,duration,distance,cardiacFreqMin,cardiacFreqAvg, cardiacFreqMax,idUser) 
+                        values (:desc,:date,:st,:du,:dis,:cFreqMin,:cFreqAvg,:cFreqMax,:idUser)";
             $stmt = $dbc->prepare($query);
 
-            // bind the paramaters
             $stmt->bindValue(':desc',$st->getDesc(),PDO::PARAM_STR);
             $stmt->bindValue(':date',$st->getDate(),PDO::PARAM_STR);
+            $stmt->bindValue(':st',$st->getStartTime(),PDO::PARAM_STR);
             $stmt->bindValue(':du',$st->getDuration(),PDO::PARAM_STR);
             $stmt->bindValue(':dis',$st->getDistance(),PDO::PARAM_STR);
             $stmt->bindValue(':cFreqMin',$st->getCardiacFreqMin(),PDO::PARAM_STR);
@@ -49,14 +48,11 @@ class ActivityDAO {
     public function delete(Activity $obj): void {
         if($obj instanceof Activity){
             $dbc = SqliteConnection::getInstance()->getConnection();
-            // prepare the SQL statement
             $query = "delete from Activities where idAct = :id";
             $stmt = $dbc->prepare($query);
 
-            // bind the paramaters
             $stmt->bindValue(':id',$obj->getId(),PDO::PARAM_STR);
 
-            // execute the prepared statement
             $stmt->execute();
         }
     }
@@ -72,15 +68,14 @@ class ActivityDAO {
     public function update(Activity $obj): void {
         if($obj instanceof Activity){
             $dbc = SqliteConnection::getInstance()->getConnection();
-            // prepare the SQL statement
-            $query = "update Activities set description = :desc , date = :date,duration = :du ,distance = :dis,cardiacFreqMin = :cFreqMin, cardiacFreqAvg = :cFreqAvg, 
+            $query = "update Activities set description = :desc , date = :date,startTime = :st,duration = :du ,distance = :dis,cardiacFreqMin = :cFreqMin, cardiacFreqAvg = :cFreqAvg, 
             cardiacFreqMax = :cFreqMax, idUser = :idUser WHERE idAct = :id";
             $stmt = $dbc->prepare($query);
 
-            // bind the paramaters
             $stmt->bindValue(':id',$obj->getId(),PDO::PARAM_STR);
             $stmt->bindValue(':desc',$obj->getDesc(),PDO::PARAM_STR);
             $stmt->bindValue(':date',$obj->getDate(),PDO::PARAM_STR);
+            $stmt->bindValue(':st',$obj->getStartTime(),PDO::PARAM_STR);
             $stmt->bindValue(':du',$obj->getDuration(),PDO::PARAM_STR);
             $stmt->bindValue(':dis',$obj->getDistance(),PDO::PARAM_STR);
             $stmt->bindValue(':cFreqMin',$obj->getCardiacFreqMin(),PDO::PARAM_STR);
@@ -88,14 +83,13 @@ class ActivityDAO {
             $stmt->bindValue(':cFreqMax',$obj->getCardiacFreqMax(),PDO::PARAM_STR);
             $stmt->bindValue(':idUser',$obj->getIdUser(),PDO::PARAM_STR);
 
-            // execute the prepared statement
             $stmt->execute();
         }
     }
 
     public final function findActivity(Activity $obj): Array{
         $dbc = SqliteConnection::getInstance()->getConnection();
-        $query = "select * from Activities where idUser = :idUser and description = :desc and date = :date and duration = :du and distance = :dis and cardiacFreqMin = :cFreqMin and cardiacFreqAvg = :cFreqAvg and
+        $query = "select * from Activities where idUser = :idUser and description = :desc and date = :date and startTime = :st and duration = :du and distance = :dis and cardiacFreqMin = :cFreqMin and cardiacFreqAvg = :cFreqAvg and
         cardiacFreqMax = :cFreqMax";
         $stmt = $dbc->query($query);
         
@@ -104,6 +98,7 @@ class ActivityDAO {
         // bind the paramaters
         $stmt->bindValue(':desc',$obj->getDesc(),PDO::PARAM_STR);
         $stmt->bindValue(':date',$obj->getDate(),PDO::PARAM_STR);
+        $stmt->bindValue(':st',$obj->getStartTime(),PDO::PARAM_STR);
         $stmt->bindValue(':du',$obj->getDuration(),PDO::PARAM_STR);
         $stmt->bindValue(':dis',$obj->getDistance(),PDO::PARAM_STR);
         $stmt->bindValue(':cFreqMin',$obj->getCardiacFreqMin(),PDO::PARAM_STR);
@@ -115,7 +110,6 @@ class ActivityDAO {
         $stmt -> execute();
         $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'Activity');
 
-        // execute the prepared statement
         return $results;
     }
 }
