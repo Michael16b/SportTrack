@@ -47,8 +47,11 @@ include VIEWS_DIR."/header.html";
                 <input type="email" id="email" name="mail" pattern="[^ @]*@[^ @]*" placeholder="michael@example.com" required>
             </div>
             <div>
-                <label for="password">Mot de passe (8 caractères dont 1 spécial) :</label>
-                <input type="password" id="password" name="password" minlength="8" pattern="(?=.*?[#?!@$%^&*-\]\[])+" required>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" 
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                title="Doit contenir au moins un nombre, une majuscule et une minuscule, et 8 caractères ou plus"
+                required>
             </div>
         </fieldset>
         <input type="submit" value="Envoyez">
