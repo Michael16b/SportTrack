@@ -35,7 +35,6 @@ class UploadActivityController extends Controller{
                                         $date  = $tabDate[2].'-'.$tabDate[1].'-'.$tabDate[0];
                                         $date = date('Y-m-d', strtotime($date));
                                         $newDate = new DateTime($date);
-                                        var_dump($errorDate == $newDate);
                                         if ($newDate == $errorDate || $newDate > $dateTimeNow) {
                                             $this->render('error',["La date de l'activité ne peut pas être supérieure à la date du jour OU la date est invalide \n"]);
                                             $dateBlock = true;
