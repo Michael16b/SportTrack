@@ -26,6 +26,7 @@ foreach ($data[0] as $value) {
         $i++;
     }
 }
+echo "<a href='/'>Allez sur la page d'accueil</a>";
 
 include VIEWS_DIR."/footer.html";
 ?>
