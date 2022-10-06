@@ -6,7 +6,7 @@ class DisconnectUserController extends Controller{
     public function get($request){
         if ($_SESSION) {
             session_destroy();
-            $this->render('disconnect_user',[]);
+            $this->render('user_disconnect',[]);
         } else {
             $this->render('error',["Vous n'êtes pas connecté"]); 
         }
